@@ -1,0 +1,39 @@
+1. Создаём репозиторий (рис. 01)
+2. Копируем ссылку на репозиторий (рис. 02)
+3. Клонируем репозиторий (рис. 03)
+
+    $ cd <путь к папке>
+    $ git clone <ссылка на репозиторий>
+
+4. Открываем папку проекта в редакторе
+5. Создаём новую ветку и переключаемся на неё:
+
+    $ git checkout -b <имя ветки>
+
+6. В .gitignore раскомментируем строку (для PyCharm):
+
+    .idea/   (~168 строка)
+
+7. Создаём и активируем виртуальное окружение:
+
+    $ python -m venv env
+    $ env\Scripts\activate
+
+8. Устанавливаем Django и freeze-им в requirements.txt:
+
+    $ pip install django
+    $ pip freeze > requirements.txt
+
+9. Создаём проект на Django:
+
+    $ django-admin startproject bboard .
+
+10. Работаем с проектом
+
+...
+
+11. Отправляем на гитхаб:
+
+    $ git add --all
+    $ git commit -m "<комментарий>"
+    $ git push origin <имя ветки>
