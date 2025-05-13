@@ -1,0 +1,94 @@
+[
+  {
+    "model": "mainapp.category",
+    "pk": 1,
+    "fields": {
+      "name": "Джинсы",
+      "description": "Покупайте наши джинсы"
+    }
+  },
+  {
+    "model": "mainapp.category",
+    "pk": 2,
+    "fields": {
+      "name": "Кеды",
+      "description": ""
+    }
+  },
+  {
+    "model": "mainapp.category",
+    "pk": 3,
+    "fields": {
+      "name": "Сумки",
+      "description": ""
+    }
+  },
+  {
+    "model": "mainapp.category",
+    "pk": 4,
+    "fields": {
+      "name": "Куртки",
+      "description": "Очень тёплые куртки"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Синие джинсы",
+      "image": "product_images/product-02.jpg",
+      "short_description": "",
+      "description": "Очень синие",
+      "price": "300.00",
+      "quantity": 8,
+      "created": "2025-05-06T13:09:16.768Z",
+      "updated": "2025-05-08T12:51:34.104Z"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "name": "Красные кеды",
+      "image": "product_images/product-04.jpg",
+      "short_description": "",
+      "description": "Очень красные и модные",
+      "price": "287.00",
+      "quantity": 9,
+      "created": "2025-05-06T13:10:11.525Z",
+      "updated": "2025-05-06T13:10:11.525Z"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+      "category": 3,
+      "name": "Сумка дамская",
+      "image": "product_images/product-05.jpg",
+      "short_description": "",
+      "description": "Ваша мадамочка оценит",
+      "price": "567.00",
+      "quantity": 4,
+      "created": "2025-05-06T13:11:03.222Z",
+      "updated": "2025-05-06T13:11:03.222Z"
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+      "category": 4,
+      "name": "Куртка синяя",
+      "image": "",
+      "short_description": "",
+      "description": "Синее не бывает",
+      "price": "4567.00",
+      "quantity": 7,
+      "created": "2025-05-08T12:47:31.377Z",
+      "updated": "2025-05-08T12:59:50.382Z"
+    }
+  }
+]
