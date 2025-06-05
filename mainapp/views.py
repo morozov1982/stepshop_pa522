@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from mainapp.models import Product, Category
 
@@ -15,9 +15,12 @@ def get_main_menu(current='mainapp:index'):
 def index(request):
     title = 'Главная'
 
+    temp = 'Мы крутая команда'
+
     prods = Product.objects.all()[:4]
 
     context = {
+        'temp': temp,
         'title': title,
         'products': prods,
         'menu_links': get_main_menu(),
@@ -27,7 +30,9 @@ def index(request):
 
 def contacts(request):
     title = 'Контакты'
+    temp = 'У нас лучшая группа'
     context = {
+        'temp': temp,
         'title': title,
         'menu_links': get_main_menu('mainapp:contacts'),
     }
@@ -41,7 +46,7 @@ def about(request):
     }
     return render(request, 'about.html', context)
 
-def products(request):
+def products(request, pk=None):
     title = 'Товары'
     prods = Product.objects.all()
     categories = Category.objects.all()
@@ -52,6 +57,18 @@ def products(request):
         'categories': categories,
         'menu_links': get_main_menu('mainapp:products'),
     }
+
+    if pk is not None:
+        if pk == 0:
+            products_ = Product.objects.all()
+            category = {'name': 'все'}
+        else:
+            category = get_object_or_404(Category, pk=pk)
+            products_ = Product.objects.filter(category__pk=pk)
+
+        context.update({'products': products_, 'category': category})
+
+
     return render(request, 'products.html', context)
 
 def product(request, pk):
