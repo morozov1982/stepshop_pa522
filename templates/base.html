@@ -54,7 +54,7 @@
                     <a href="{% url 'auth:logout' %}"
                        class="btn btn-light btn-sm mx-3">Выйти</a>
                     {% if basket %}
-                      <a href="#" class="basket mx-3">
+                      <a href="{% url 'basket:view' %}" class="basket mx-3">
                         <span>{{ basket|length }}</span>
                       </a>
                     {% endif %}

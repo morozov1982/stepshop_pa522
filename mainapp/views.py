@@ -1,16 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
-from basketapp.models import Basket
 from mainapp.models import Product, Category
-
-
-def get_main_menu(current='mainapp:index'):
-    return [
-        {'href': 'mainapp:index', 'name': 'Главная', 'active': current},
-        {'href': 'mainapp:products', 'name': 'Товары', 'active': current},
-        {'href': 'mainapp:about', 'name': 'О нас', 'active': current},
-        {'href': 'mainapp:contacts', 'name': 'Контакты', 'active': current},
-    ]
+from mainapp.utils import get_main_menu, get_basket
 
 
 def index(request):
@@ -24,6 +15,7 @@ def index(request):
         'temp': temp,
         'title': title,
         'products': prods,
+        'basket': get_basket(request.user),
         'menu_links': get_main_menu(),
     }
 
@@ -35,6 +27,7 @@ def contacts(request):
     context = {
         'temp': temp,
         'title': title,
+        'basket': get_basket(request.user),
         'menu_links': get_main_menu('mainapp:contacts'),
     }
     return render(request, 'contacts.html', context)
@@ -43,6 +36,7 @@ def about(request):
     title = 'О нас'
     context = {
         'title': title,
+        'basket': get_basket(request.user),
         'menu_links': get_main_menu('mainapp:about'),
     }
     return render(request, 'about.html', context)
@@ -52,17 +46,12 @@ def products(request, pk=None):
     prods = Product.objects.all()
     categories = Category.objects.all()
 
-    basket = []
-
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-
     context = {
         'title': title,
         'products': prods,
         'categories': categories,
         'menu_links': get_main_menu('mainapp:products'),
-        'basket': basket,
+        'basket': get_basket(request.user),
     }
 
     if pk is not None:
@@ -88,6 +77,7 @@ def product(request, pk):
         'title': title,
         'product': prod,
         'products': same_prods,
+        'basket': get_basket(request.user),
         'menu_links': get_main_menu('mainapp:products'),
     }
     return render(request, 'product.html', context)
